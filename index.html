@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maira Yissela Ruge - CV</title>
+  <style>
+    :root {
+      --text: #1a1a1a;
+      --text-muted: #444;
+      --border: #ddd;
+      --bg: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+      margin: 0;
+      padding: 1rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .no-print {
+      margin-bottom: 1.5rem;
+    }
+    .pdf-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .pdf-btn:hover { opacity: 0.9; }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .lang-switcher span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+    .lang-switcher span:hover { color: var(--text); }
+    .lang-switcher span.active {
+      font-weight: 600;
+      color: var(--text);
+    }
+    .content-lang { display: none; }
+    .content-lang.active { display: block; }
+    header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #F0F5F7 0%, #D5E1E7 50%, #C0D0D8 100%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(133, 160, 174, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(ellipse, rgba(110, 136, 150, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    /* Subtle texture effect */
+    header {
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(135deg, #F0F5F7 0%, #D5E1E7 50%, #C0D0D8 100%);
+      background-size: 30px 30px, 40px 40px, 100% 100%;
+      background-position: 0 0, 0 0, 0 0;
+    }
+    header h1,
+    header .subtitle {
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0 0 0.25rem 0;
+      text-transform: uppercase;
+      color: #1a1a1a;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #444;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 2rem;
+    }
+    @media (max-width: 700px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    section {
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.25rem;
+    }
+    .contact p {
+      margin: 0.25rem 0;
+      font-size: 0.9rem;
+    }
+    .contact a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .contact a:hover { text-decoration: underline; }
+    .profile p {
+      margin: 0;
+      font-size: 0.9rem;
+      text-align: justify;
+    }
+    .skills-list, .edu-list, .cert-list, .lang-list {
+      margin: 0;
+      padding-left: 1rem;
+      font-size: 0.9rem;
+    }
+    .skills-list li, .edu-list li, .cert-list li, .lang-list li {
+      margin-bottom: 0.25rem;
+    }
+    .skills-tools {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    article.job {
+      margin-bottom: 1.25rem;
+      break-inside: avoid;
+    }
+    .job-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+    .job-role {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .job-company {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .job-dates {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .job ul {
+      margin: 0.35rem 0 0 0;
+      padding-left: 1.15rem;
+      font-size: 0.9rem;
+    }
+    .job li {
+      margin-bottom: 0.2rem;
+    }
+    /* Print - Optimized for ATS and human reading */
+    @media print {
+      @page {
+        margin: 0.1in 0.5in 0.5in 0.5in;
+        size: letter;
+      }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      html {
+        padding: 0 !important;
+        margin: 0 !important;
+        height: auto !important;
+        width: 100% !important;
+      }
+      html, body {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        width: 100% !important;
+      }
+      body {
+        font-size: 10pt;
+        line-height: 1.4;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      /* Remove any space before first visible element - critical for first page */
+      body > .no-print {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 0 !important;
+        font-size: 0 !important;
+      }
+      body > .content-lang.active {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        display: block !important;
+      }
+      /* Ensure first child of body (content-lang) starts at absolute top */
+      body > .content-lang.active:first-of-type {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
+      .no-print,
+      .toolbar,
+      .lang-switcher {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      /* Hide inactive language content */
+      .content-lang:not(.active) {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      /* Ensure active content starts immediately at page margin top */
+      .content-lang.active {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+        position: relative !important;
+        top: 0 !important;
+        min-height: 0 !important;
+      }
+      /* Critical: Force first element to start at absolute top of page margin */
+      body > .content-lang.active:first-child > header:first-child {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
+      /* Force header to start exactly at page margin top */
+      .content-lang.active > header:first-child {
+        margin-top: 0 !important;
+        margin-bottom: 0.15rem !important;
+        padding: 0.3rem 0.5rem 0.25rem 0.5rem !important;
+        border-bottom: 1px solid var(--border) !important;
+        border-radius: 0 !important;
+        background: linear-gradient(135deg, #F0F5F7 0%, #E5EDF0 100%) !important;
+        box-shadow: none !important;
+        page-break-after: avoid;
+      }
+      .content-lang.active > header {
+        margin: 0 0 0.15rem 0 !important;
+        padding: 0.3rem 0.5rem 0.25rem 0.5rem !important;
+        border-bottom: 1px solid var(--border) !important;
+        border-radius: 0 !important;
+        background: linear-gradient(135deg, #F0F5F7 0%, #E5EDF0 100%) !important;
+        box-shadow: none !important;
+        page-break-after: avoid;
+      }
+      header {
+        margin: 0 0 0.15rem 0 !important;
+        padding: 0.3rem 0.5rem 0.25rem 0.5rem !important;
+        border-bottom: 1px solid var(--border) !important;
+        border-radius: 0 !important;
+        background: linear-gradient(135deg, #F0F5F7 0%, #E5EDF0 100%) !important;
+        box-shadow: none !important;
+        page-break-after: avoid;
+      }
+      header::before,
+      header::after {
+        opacity: 0.3 !important;
+      }
+      .content-lang.active > .layout {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
+      h1 {
+        font-size: 13pt !important;
+        margin: 0 0 0.02rem 0 !important;
+        padding: 0 !important;
+        line-height: 1.1 !important;
+        display: block !important;
+      }
+      .subtitle {
+        font-size: 7pt !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.1 !important;
+        display: block !important;
+      }
+      .layout {
+        gap: 0.75rem !important;
+        grid-template-columns: 1fr 1.8fr !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .sidebar,
+      main {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      section {
+        margin-bottom: 0.5rem !important;
+        padding: 0 !important;
+        page-break-inside: avoid;
+      }
+      .section-title {
+        font-size: 7pt !important;
+        margin-bottom: 0.35rem !important;
+        padding-bottom: 0.15rem !important;
+        page-break-after: avoid;
+      }
+      .contact p {
+        margin: 0.15rem 0 !important;
+        font-size: 9pt !important;
+      }
+      .contact a {
+        color: var(--text) !important;
+        text-decoration: none !important;
+      }
+      /* ATS can read href attributes, no need to show URLs in text */
+      .profile p {
+        font-size: 9pt !important;
+        text-align: left !important;
+        margin: 0 !important;
+      }
+      .skills-list,
+      .edu-list,
+      .cert-list,
+      .lang-list {
+        font-size: 9pt !important;
+        padding-left: 1rem !important;
+        margin: 0.25rem 0 !important;
+      }
+      .skills-list li,
+      .edu-list li,
+      .cert-list li,
+      .lang-list li {
+        margin-bottom: 0.15rem !important;
+      }
+      .skills-tools {
+        font-size: 8pt !important;
+        margin-top: 0.35rem !important;
+      }
+      article.job {
+        margin-bottom: 0.5rem !important;
+        padding: 0 !important;
+        page-break-inside: avoid;
+      }
+      .job-header {
+        margin-bottom: 0.25rem !important;
+        gap: 0.5rem !important;
+      }
+      .job-role {
+        font-size: 10pt !important;
+        font-weight: 600 !important;
+      }
+      .job-company {
+        font-size: 9pt !important;
+      }
+      .job-dates {
+        font-size: 8pt !important;
+      }
+      .job ul {
+        margin: 0.25rem 0 0 0 !important;
+        padding-left: 1rem !important;
+        font-size: 9pt !important;
+      }
+      .job li {
+        margin-bottom: 0.15rem !important;
+      }
+      /* Ensure links are visible for ATS */
+      a[href] {
+        color: var(--text) !important;
+        text-decoration: none !important;
+      }
+      /* Prevent orphaned content */
+      .sidebar,
+      main {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print toolbar">
+    <div class="lang-switcher" role="group" aria-label="Idioma / Language">
+      <span id="lang-es" class="active" role="button" tabindex="0" aria-pressed="true">ES</span>
+      <span aria-hidden="true">|</span>
+      <span id="lang-en" role="button" tabindex="0" aria-pressed="false">EN</span>
+    </div>
+    <button type="button" class="pdf-btn" id="pdf-btn" onclick="generatePDF();" aria-label="Descargar como PDF">Descargar PDF</button>
+  </div>
+
+  <div id="content-es" class="content-lang active">
+  <header>
+    <h1>Maira Yissela Ruge</h1>
+    <p class="subtitle">Head of QA / Software Engineer Manager</p>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <section class="contact">
+        <h2 class="section-title">Contacto</h2>
+        <p>57+ 3188631009</p>
+        <p><a href="mailto:maira.cuellar@gmail.com">maira.cuellar@gmail.com</a></p>
+        <p><a href="https://www.linkedin.com/in/maira-ruge/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        <p>Bogotá - Colombia</p>
+      </section>
+
+      <section class="profile">
+        <h2 class="section-title">Perfil profesional</h2>
+        <p>Ingeniera de Sistemas con más de 16 años de experiencia en tecnología, y 7 años liderando equipos multidisciplinarios en entornos de alta exigencia. He liderado desde áreas de QA hasta la dirección completa de tecnología, asegurando la entrega de software escalable, alineado con la estrategia del negocio y con impacto directo en la operación. Cuento con experiencia liderando prácticas de calidad y automatización integradas al proceso de desarrollo, participando desde etapas tempranas y acompañando a los equipos hasta producción. Trabajo de forma cercana con ingeniería y producto para asegurar software escalable y confiable, con foco en mejora continua y responsabilidad técnica compartida.</p>
+      </section>
+
+      <section class="skills">
+        <h2 class="section-title">Skills</h2>
+        <ul class="skills-list">
+          <li>Liderazgo</li>
+          <li>Comunicación efectiva</li>
+          <li>Planeación y organización</li>
+          <li>Orientación a resultados</li>
+          <li>Resolución de conflictos</li>
+          <li>SCRUM</li>
+        </ul>
+        <p class="skills-tools">Jira / Confluence / Bitbucket · SonarQube · Postman · Cypress · Appium · Qmetry · Cursor · Vercel · Neon · Clerk</p>
+      </section>
+
+      <section class="education">
+        <h2 class="section-title">Educación</h2>
+        <ul class="edu-list">
+          <li><strong>Corporación Unificada Nacional de Educación Superior (CUN)</strong><br>Ingeniera de Sistemas · 2006 - 2011</li>
+        </ul>
+      </section>
+
+      <section class="certifications">
+        <h2 class="section-title">Certificaciones</h2>
+        <ul class="cert-list">
+          <li>ISTQB Certified Tester</li>
+          <li>ITIL Foundation Certificate in IT Service Management (2011)</li>
+        </ul>
+      </section>
+
+      <section class="languages">
+        <h2 class="section-title">Idiomas</h2>
+        <ul class="lang-list">
+          <li>Español (Nativo)</li>
+          <li>Inglés (B1)</li>
+        </ul>
+      </section>
+    </aside>
+
+    <main>
+      <section class="experience">
+        <h2 class="section-title">Experiencia profesional</h2>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Freelance Software Engineer</span>
+            <span class="job-dates">Noviembre 2025 - Actual</span>
+          </div>
+          <p class="job-company">HiPen Media</p>
+          <ul>
+            <li>Diseño y desarrollo MVPs end-to-end, convirtiendo requerimientos de negocio en productos funcionales para validación temprana de ideas.</li>
+            <li>Colaboro con product manager, diseño y desarrolladores en la definición e implementación técnica, usando Vercel, Neon, Clerk y Cursor para entregar soluciones de alta calidad en ciclos cortos.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Software Engineering Manager</span>
+            <span class="job-dates">Marzo 2022 - Julio 2025</span>
+          </div>
+          <p class="job-company">Merqueo</p>
+          <ul>
+            <li>Dirigí el área de tecnología durante una etapa crítica de reestructuración, liderando un equipo multidisciplinario de 10 ingenieros (backend, mobile e infraestructura) en un entorno 100% remoto.</li>
+            <li>Aseguré la continuidad operativa del canal online (ventas mensuales superiores a $800 millones COP) y lideré la evolución tecnológica para soportar también el canal offline, con hasta 60.000 órdenes al mes.</li>
+            <li>Lideré la transferencia completa de la tecnología de la compañía a un comprador externo, coordinando la documentación funcional y técnica, la planificación de la migración, y el despliegue de infraestructura en una nueva cuenta de AWS.</li>
+            <li>Definí y prioricé iniciativas estratégicas para la operación física, como la integración con POS, módulos de abastecimiento, e inventario por recetas, asegurando su correcta implementación con el equipo técnico.</li>
+            <li>Reduje costos operativos, eliminando herramientas y gestionando alternativas sostenibles para mantener la operación sin comprometer calidad.</li>
+            <li>Lideré con enfoque en resiliencia, eficiencia y adaptación al cambio, manteniendo al equipo motivado y productivo frente a un contexto de alta presión e incertidumbre.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Head of QA</span>
+            <span class="job-dates">Enero 2021 - Febrero 2022</span>
+          </div>
+          <p class="job-company">Merqueo</p>
+          <ul>
+            <li>Liderar el equipo de QA. Desarrollar el plan de carrera del equipo y guiar el crecimiento técnico, incluyendo contratación, formación y promoción de ingenieros de QA.</li>
+            <li>Implementar procesos, estrategias de QA y herramientas (Postman, Cypress, Appium, Qmetry) para mejorar la calidad y eficiencia de las entregas a producción.</li>
+            <li>Definir OKRs y KPIs del gremio, alineados con la estrategia de la empresa y velar por su cumplimiento.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">QA Lead</span>
+            <span class="job-dates">Julio 2019 - Diciembre 2020</span>
+          </div>
+          <p class="job-company">Merqueo</p>
+          <ul>
+            <li>Colaborar con líderes de desarrollo y producto en la creación de un proceso de involucramiento temprano del equipo de calidad en el desarrollo.</li>
+            <li>Participar activamente en pruebas de API, aplicaciones móviles y web para plataforma con más de 50.000 usuarios activos.</li>
+            <li>Establecer estándar de pull requests, mejorar revisión de código y definir proceso de reporte y priorización de errores con enfoque en impacto, prioridad y urgencia.</li>
+            <li>Promover espacios de colaboración para abordar errores comunes, proponer soluciones y fomentar una cultura de calidad compartida en el equipo de desarrollo, permitiendo disminuir en un 95% la tasa de errores graves en producción.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">QA Engineer / Scrum Master</span>
+            <span class="job-dates">Junio 2016 - Junio 2019</span>
+          </div>
+          <p class="job-company">Domicilios.com</p>
+          <ul>
+            <li>Encargada del aseguramiento de calidad, integración y entrega continua de software a usuarios internos y externos.</li>
+            <li>Definir e implementar procesos y mejores prácticas de DevOps para lograr un 99% de despliegues exitosos en producción.</li>
+            <li>Apoyar la construcción de un flujo de trabajo basado en mejores prácticas, incluyendo análisis de código estático para alcanzar altos niveles de cobertura de código en proyectos nuevos y heredados (superior al 95% y 80%, respectivamente).</li>
+            <li>Mejorar tiempo de pruebas de regresión, implementando automatización de pruebas E2E.</li>
+            <li>Facilitar ceremonias de SCRUM, registrar acciones y capacitar al equipo en SCRUM para impulsar la mejora continua.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Consultora QA</span>
+            <span class="job-dates">Junio 2014 - Junio 2016</span>
+          </div>
+          <p class="job-company">Tivit</p>
+          <ul>
+            <li>Líder de control de calidad, impulsé exitosamente el proceso de QA para la migración del sistema comercial, que genera más de 4 millones de facturas al mes.</li>
+            <li>Logré una disminución del 20% en el tiempo de respuesta y aseguré el cumplimiento del SLA del cliente mediante estrategias de atención y seguimiento efectivas.</li>
+            <li>Definición de procesos para mejorar la gestión de la configuración y el aseguramiento de calidad del software.</li>
+            <li>Gestión de los cambios en los entornos de prueba y producción.</li>
+            <li>Liderar y coordinar talleres enfocados en el marco de trabajo SCRUM.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Ingeniera de proyectos TI</span>
+            <span class="job-dates">Noviembre 2011 - Junio 2014</span>
+          </div>
+          <p class="job-company">EBC Ingeniería · G4S Technology</p>
+          <ul>
+            <li>Ingeniera de proyectos TI en EBC Ingeniería (ahora G4S Technology).</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Especialista de pruebas</span>
+            <span class="job-dates">Junio 2008 - Octubre 2011</span>
+          </div>
+          <p class="job-company">Aranda Software</p>
+          <ul>
+            <li>Especialista de pruebas en Aranda Software.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+  </div>
+
+  <div id="content-en" class="content-lang">
+  <header>
+    <h1>Maira Yissela Ruge</h1>
+    <p class="subtitle">Software Engineer Manager</p>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <section class="contact">
+        <h2 class="section-title">Contact</h2>
+        <p>57+ 3188631009</p>
+        <p><a href="mailto:maira.cuellar@gmail.com">maira.cuellar@gmail.com</a></p>
+        <p><a href="https://www.linkedin.com/in/maira-ruge/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        <p>Bogotá - Colombia</p>
+      </section>
+
+      <section class="profile">
+        <h2 class="section-title">About me</h2>
+        <p>Systems Engineer with over 16 years of experience in technology, including 7 years leading multidisciplinary teams in high-demand environments. I have led everything from QA departments to the entire technology area, ensuring the delivery of scalable software aligned with business strategy and with a direct impact on operations. Experienced at connecting talent, technology, and business goals. I transform complex needs into actionable solutions by building resilient, product-oriented teams focused on continuous improvement, effective communication, and real value delivery.</p>
+      </section>
+
+      <section class="skills">
+        <h2 class="section-title">Skills</h2>
+        <ul class="skills-list">
+          <li>Leadership</li>
+          <li>Communication skills</li>
+          <li>Planning and organization</li>
+          <li>Results oriented</li>
+          <li>Conflict resolution</li>
+          <li>SCRUM</li>
+          <li>People management</li>
+        </ul>
+        <p class="skills-tools">Jira / Confluence / Bitbucket · SonarQube · Postman · Cypress · Appium · Qmetry · Cursor · Vercel · Neon · Clerk</p>
+      </section>
+
+      <section class="education">
+        <h2 class="section-title">Education</h2>
+        <ul class="edu-list">
+          <li><strong>Corporación Unificada Nacional de Educación Superior (CUN)</strong><br>Systems Engineer · 2006 - 2011</li>
+        </ul>
+      </section>
+
+      <section class="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <ul class="cert-list">
+          <li>ISTQB Certified Tester</li>
+          <li>ITIL Foundation Certificate in IT Service Management (2011)</li>
+        </ul>
+      </section>
+
+      <section class="languages">
+        <h2 class="section-title">Languages</h2>
+        <ul class="lang-list">
+          <li>Spanish (Native)</li>
+          <li>English (B1)</li>
+        </ul>
+      </section>
+    </aside>
+
+    <main>
+      <section class="experience">
+        <h2 class="section-title">Professional experience</h2>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Freelance Software Engineer</span>
+            <span class="job-dates">November 2025 - Present</span>
+          </div>
+          <p class="job-company">HiPen Media</p>
+          <ul>
+            <li>Design and develop end-to-end MVPs for early product validation, translating business requirements into functional solutions.</li>
+            <li>Work closely with product manager, designer, and developers, leveraging Vercel, Neon, Clerk, and Cursor to deliver high-quality software in short cycles.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Software Engineering Manager</span>
+            <span class="job-dates">March 2022 - July 2025</span>
+          </div>
+          <p class="job-company">Merqueo</p>
+          <ul>
+            <li>Led the technology area during a critical restructuring stage, managing a multidisciplinary team of 10 engineers (backend, mobile, and infrastructure) in a fully remote environment.</li>
+            <li>Ensured the operational continuity of the online channel (with monthly sales over COP 800 million) and led the technological evolution to support the offline channel as well, reaching up to 60,000 orders per month.</li>
+            <li>Directed the full transfer of the company's technology to an external buyer, coordinating technical and functional documentation, migration planning, and infrastructure deployment in a new AWS account.</li>
+            <li>Defined and prioritized strategic initiatives for the physical operation, including POS integration, supply modules, and inventory control based on recipes, ensuring proper implementation with the technical team.</li>
+            <li>Reduced operational costs by eliminating tools and managing sustainable alternatives to maintain the operation without compromising quality.</li>
+            <li>Led with a focus on resilience, efficiency, and adaptability, keeping the team motivated and productive in a high-pressure, uncertain environment.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Head of QA</span>
+            <span class="job-dates">January 2021 - February 2022</span>
+          </div>
+          <p class="job-company">Merqueo</p>
+          <ul>
+            <li>Led and managed the Quality Assurance team, instilling a culture of quality-first in software delivery.</li>
+            <li>Developed and implemented career plans for the team, guided their technical growth, and played a key role in hiring, training, and promoting QA engineers.</li>
+            <li>Established QA processes, strategies, and toolsets (including Postman, Cypress, Appium, and Qmetry), leading to significant improvements in quality and efficiency of deliverables to production.</li>
+            <li>Define OKRs and KPIs of the guild, aligned with the company's strategy and ensure compliance.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">QA Lead</span>
+            <span class="job-dates">July 2019 - December 2020</span>
+          </div>
+          <p class="job-company">Merqueo</p>
+          <ul>
+            <li>Collaborate with development and product leaders in creating a process for early involvement of the quality team in development.</li>
+            <li>Actively participate in API, mobile and web application testing for platform with over 50,000 active users.</li>
+            <li>Establish standard pull requests, improve code review and define bug reporting and prioritization process with focus on impact, priority and urgency.</li>
+            <li>Promote collaborative spaces to address common bugs, propose solutions and foster a shared quality culture in the development team, allowing to reduce by 95% the rate of serious bugs in production.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">QA Engineer / Scrum Master</span>
+            <span class="job-dates">June 2016 - June 2019</span>
+          </div>
+          <p class="job-company">Domicilios.com</p>
+          <ul>
+            <li>Assured the quality, integration, and seamless delivery of software to both internal and external users, enhancing user experience and reliability.</li>
+            <li>Defined and implemented DevOps processes and best practices, achieving an exceptional 99% success rate in production deployments.</li>
+            <li>Supported the establishment of a workflow rooted in best practices, which included static code analysis to attain high levels of code coverage on both new and legacy projects (above 95% and 80%, respectively).</li>
+            <li>Optimized regression testing time by implementing end-to-end (E2E) Test Automation, resulting in improved efficiency and faster delivery times.</li>
+            <li>Facilitated SCRUM ceremonies, documented action items, and trained the team on SCRUM methodologies, fostering a culture of continuous improvement and agile practices.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Quality Assurance Consultant</span>
+            <span class="job-dates">June 2014 - June 2016</span>
+          </div>
+          <p class="job-company">Tivit</p>
+          <ul>
+            <li>QA leader, I successfully drove the QA process for the migration of the commercial system, which generates more than 4 million invoices per month.</li>
+            <li>Achieved a 20% decrease in response time and ensured compliance with the client's SLA through effective care and follow-up strategies.</li>
+            <li>Defined processes to improve configuration management and software quality assurance.</li>
+            <li>Change management in test and production environments.</li>
+            <li>Lead and coordinate workshops focused on the SCRUM framework.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">IT Project Engineer</span>
+            <span class="job-dates">November 2011 - June 2014</span>
+          </div>
+          <p class="job-company">EBC Ingeniería · G4S Technology</p>
+          <ul>
+            <li>IT Project Engineer at EBC Ingeniería (now G4S Technology).</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <span class="job-role">Test Specialist</span>
+            <span class="job-dates">June 2008 - October 2011</span>
+          </div>
+          <p class="job-company">Aranda Software</p>
+          <ul>
+            <li>Test Specialist at Aranda Software.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    function generatePDF() {
+      var activeContent = document.querySelector('.content-lang.active');
+      if (!activeContent) {
+        // Fallback a window.print si html2pdf no está disponible
+        window.print();
+        return;
+      }
+      
+      var lang = document.documentElement.lang || 'es';
+      var filename = lang === 'en' ? 'Maira_Ruge_Resume.pdf' : 'Maira_Ruge_CV.pdf';
+      
+      // Ocultar el toolbar temporalmente
+      var toolbar = document.querySelector('.toolbar');
+      var toolbarDisplay = toolbar ? toolbar.style.display : '';
+      if (toolbar) toolbar.style.display = 'none';
+      
+      // Clonar el contenido para aplicar estilos específicos para PDF
+      var clone = activeContent.cloneNode(true);
+      clone.style.width = '8.5in';
+      clone.style.padding = '0.2in 0.5in';
+      clone.style.margin = '0';
+      clone.style.background = 'white';
+      clone.style.display = 'block';
+      
+      // Crear un contenedor temporal
+      var tempContainer = document.createElement('div');
+      tempContainer.style.position = 'absolute';
+      tempContainer.style.left = '-9999px';
+      tempContainer.style.top = '0';
+      tempContainer.appendChild(clone);
+      document.body.appendChild(tempContainer);
+      
+      var opt = {
+        margin: [0, 0, 0, 0],
+        filename: filename,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          backgroundColor: '#ffffff'
+        },
+        jsPDF: { 
+          unit: 'in', 
+          format: 'letter', 
+          orientation: 'portrait' 
+        },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+      
+      html2pdf().set(opt).from(clone).save().then(function() {
+        // Limpiar y restaurar
+        document.body.removeChild(tempContainer);
+        if (toolbar) toolbar.style.display = toolbarDisplay;
+      }).catch(function(err) {
+        // Si falla, usar window.print como fallback
+        document.body.removeChild(tempContainer);
+        if (toolbar) toolbar.style.display = toolbarDisplay;
+        console.error('Error generating PDF, falling back to print:', err);
+        window.print();
+      });
+    }
+
+    (function() {
+      var contentEs = document.getElementById('content-es');
+      var contentEn = document.getElementById('content-en');
+      var langEs = document.getElementById('lang-es');
+      var langEn = document.getElementById('lang-en');
+      var pdfBtn = document.getElementById('pdf-btn');
+      var STORAGE_KEY = 'cv-lang';
+
+      function setLang(lang) {
+        if (lang === 'en') {
+          contentEs.classList.remove('active');
+          contentEn.classList.add('active');
+          langEs.classList.remove('active');
+          langEs.setAttribute('aria-pressed', 'false');
+          langEn.classList.add('active');
+          langEn.setAttribute('aria-pressed', 'true');
+          pdfBtn.textContent = 'Download PDF';
+          pdfBtn.setAttribute('aria-label', 'Download as PDF');
+          document.documentElement.lang = 'en';
+          document.title = 'Maira Yissela Ruge - Resume';
+        } else {
+          contentEn.classList.remove('active');
+          contentEs.classList.add('active');
+          langEn.classList.remove('active');
+          langEn.setAttribute('aria-pressed', 'false');
+          langEs.classList.add('active');
+          langEs.setAttribute('aria-pressed', 'true');
+          pdfBtn.textContent = 'Descargar PDF';
+          pdfBtn.setAttribute('aria-label', 'Descargar como PDF');
+          document.documentElement.lang = 'es';
+          document.title = 'Maira Yissela Ruge - CV';
+        }
+        try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+      }
+
+      langEs.addEventListener('click', function() { setLang('es'); });
+      langEn.addEventListener('click', function() { setLang('en'); });
+      langEs.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setLang('es'); } });
+      langEn.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setLang('en'); } });
+
+      try {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'en') setLang('en');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>
